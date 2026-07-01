@@ -22,21 +22,21 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aurelia-med-spa.vercel.app/'
   ),
-  title: 'Lumière Medical Spa | Personalized Aesthetic Care in Scottsdale',
+  title: 'Aurelia Medical Spa | Personalized Aesthetic Care in Scottsdale',
   description:
     'Personalized aesthetic treatments designed by board-certified physician Dr. Sophia Laurent to help you achieve natural, confident, and lasting results in Scottsdale, Arizona.',
   openGraph: {
-    title: 'Lumière Medical Spa | Personalized Aesthetic Care in Scottsdale',
+    title: 'Aurelia Medical Spa | Personalized Aesthetic Care in Scottsdale',
     description:
       'Personalized aesthetic treatments designed by board-certified physician Dr. Sophia Laurent to help you achieve natural, confident, and lasting results in Scottsdale, Arizona.',
     url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aurelia-med-spa.vercel.app/',
-    siteName: 'Lumière Medical Spa',
+    siteName: 'Aurelia Medical Spa',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Lumière Medical Spa',
+        alt: 'Aurelia Medical Spa',
       },
     ],
     locale: 'en_US',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Lumière Medical Spa | Personalized Aesthetic Care in Scottsdale',
+    title: 'Aurelia Medical Spa | Personalized Aesthetic Care in Scottsdale',
     description:
       'Personalized aesthetic treatments designed by board-certified physician Dr. Sophia Laurent to help you achieve natural, confident, and lasting results in Scottsdale, Arizona.',
     images: ['/og-image.png'],
