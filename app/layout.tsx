@@ -20,7 +20,7 @@ const cormorant = Fraunces({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lumiere-med-spa.vercel.app/'
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aurelia-med-spa.vercel.app/'
   ),
   title: 'Lumière Medical Spa | Personalized Aesthetic Care in Scottsdale',
   description:
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: 'Lumière Medical Spa | Personalized Aesthetic Care in Scottsdale',
     description:
       'Personalized aesthetic treatments designed by board-certified physician Dr. Sophia Laurent to help you achieve natural, confident, and lasting results in Scottsdale, Arizona.',
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lumiere-med-spa.vercel.app/',
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aurelia-med-spa.vercel.app/',
     siteName: 'Lumière Medical Spa',
     images: [
       {
