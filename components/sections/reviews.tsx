@@ -83,7 +83,7 @@ export function Reviews() {
 
         <Reveal
           stagger
-          className="mt-5 grid grid-cols-1 gap-2 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
+          className="mt-5 grid grid-cols-1 gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3"
         >
           {testimonials.map((t) => (
             <RevealItem
