@@ -19,7 +19,6 @@ export function BeforeAfterSlider() {
     e.stopPropagation()
     draggingRef.current = true
     ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
-    updateFromClientX(e.clientX)
   }
   function onPointerMove(e: React.PointerEvent) {
     if (!draggingRef.current) return
