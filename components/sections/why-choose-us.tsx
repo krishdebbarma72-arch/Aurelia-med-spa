@@ -65,7 +65,7 @@ export function WhyChooseUs() {
         </Reveal>
         <Reveal
           stagger
-          className="mt-6 grid grid-cols-1 gap-2.5 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
+          className="mt-6 grid grid-cols-1 gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3"
         >
           {trustCards.map((card) => {
             const Icon = card.icon
