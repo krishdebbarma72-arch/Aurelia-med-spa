@@ -46,7 +46,7 @@ export function Reveal({
         variants={container}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, margin: '-80px' }}
+        viewport={{ once: true, margin: '-40px' }}
       >
         {children}
       </MotionTag>
@@ -73,7 +73,7 @@ export function Reveal({
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, margin: '-80px' }}
+      viewport={{ once: true, margin: '-40px' }}
     >
       {children}
     </MotionTag>
