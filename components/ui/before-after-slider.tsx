@@ -6,8 +6,6 @@ export function BeforeAfterSlider() {
   const [pct, setPct] = useState(50)
   const containerRef = useRef<HTMLDivElement>(null)
   const draggingRef = useRef(false)
-  const pointerStartX = useRef<number | null>(null)
-  const DRAG_THRESHOLD = 5 // px — must move this far before it counts as a drag
 
   const updateFromClientX = useCallback((clientX: number) => {
     const el = containerRef.current
@@ -17,26 +15,23 @@ export function BeforeAfterSlider() {
     setPct(Math.min(100, Math.max(0, next)))
   }, [])
 
-  function onPointerDown(e: React.PointerEvent) {
+  // Events live on the handle — not the container.
+  // touch-none on the handle prevents scroll when grabbing it;
+  // the rest of the image has no touch-action restriction so vertical
+  // scroll works normally on mobile.
+  function onHandlePointerDown(e: React.PointerEvent) {
     e.stopPropagation()
-    pointerStartX.current = e.clientX
+    draggingRef.current = true
     ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
   }
-  function onPointerMove(e: React.PointerEvent) {
-    if (pointerStartX.current === null) return
-    if (!draggingRef.current) {
-      // Only start dragging after threshold exceeded
-      if (Math.abs(e.clientX - pointerStartX.current) < DRAG_THRESHOLD) return
-      draggingRef.current = true
-    }
-    e.stopPropagation()
+  function onHandlePointerMove(e: React.PointerEvent) {
+    if (!draggingRef.current) return
     updateFromClientX(e.clientX)
   }
-  function onPointerUp(e: React.PointerEvent) {
-    e.stopPropagation()
+  function onHandlePointerUp() {
     draggingRef.current = false
-    pointerStartX.current = null
   }
+
   function onKeyDown(e: React.KeyboardEvent) {
     if (e.key === 'ArrowLeft') setPct((p) => Math.max(0, p - 5))
     if (e.key === 'ArrowRight') setPct((p) => Math.min(100, p + 5))
@@ -51,13 +46,10 @@ export function BeforeAfterSlider() {
       aria-valuemin={0}
       aria-valuemax={100}
       tabIndex={0}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
       onKeyDown={onKeyDown}
-      className="relative aspect-[1/1.4] w-full max-w-sm select-none touch-none overflow-hidden rounded-2xl border border-border shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:max-w-md lg:aspect-auto lg:h-full lg:max-w-none"
+      className="relative aspect-[1/1.4] w-full max-w-sm select-none overflow-hidden rounded-2xl border border-border shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:max-w-md lg:aspect-auto lg:h-full lg:max-w-none"
     >
-      {/* After (base layer, fully visible underneath) */}
+      {/* After (base layer) */}
       <Image
         src="/images/skin-after.png"
         alt="Skin after the treatment cycle showing smooth, radiant, even-toned complexion"
@@ -71,7 +63,7 @@ export function BeforeAfterSlider() {
         After
       </span>
 
-      {/* Before (clipped layer on top, reveals based on pct) */}
+      {/* Before (clipped) */}
       <div
         className="absolute inset-0"
         style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}
@@ -89,11 +81,21 @@ export function BeforeAfterSlider() {
         </span>
       </div>
 
-      {/* Divider handle */}
+      {/*
+        Handle — w-12 (48px) hit area centred on the line gives ~24px
+        proximity on each side. touch-none here only, so the image area
+        stays scrollable on mobile.
+      */}
       <div
-        className="absolute inset-y-0 z-10 w-0.5 bg-accent"
+        className="absolute inset-y-0 z-10 w-12 -translate-x-1/2 cursor-ew-resize touch-none"
         style={{ left: `${pct}%` }}
+        onPointerDown={onHandlePointerDown}
+        onPointerMove={onHandlePointerMove}
+        onPointerUp={onHandlePointerUp}
       >
+        {/* Visual line centred in hit area */}
+        <div className="absolute inset-y-0 left-1/2 w-0.5 -translate-x-1/2 bg-accent" />
+        {/* Circle button */}
         <div className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-md">
           <MoveHorizontal className="h-5 w-5" aria-hidden="true" />
         </div>
