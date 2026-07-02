@@ -6,6 +6,8 @@ export function BeforeAfterSlider() {
   const [pct, setPct] = useState(50)
   const containerRef = useRef<HTMLDivElement>(null)
   const draggingRef = useRef(false)
+  const pointerStartX = useRef<number | null>(null)
+  const DRAG_THRESHOLD = 5 // px — must move this far before it counts as a drag
 
   const updateFromClientX = useCallback((clientX: number) => {
     const el = containerRef.current
@@ -17,17 +19,23 @@ export function BeforeAfterSlider() {
 
   function onPointerDown(e: React.PointerEvent) {
     e.stopPropagation()
-    draggingRef.current = true
+    pointerStartX.current = e.clientX
     ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
   }
   function onPointerMove(e: React.PointerEvent) {
-    if (!draggingRef.current) return
+    if (pointerStartX.current === null) return
+    if (!draggingRef.current) {
+      // Only start dragging after threshold exceeded
+      if (Math.abs(e.clientX - pointerStartX.current) < DRAG_THRESHOLD) return
+      draggingRef.current = true
+    }
     e.stopPropagation()
     updateFromClientX(e.clientX)
   }
   function onPointerUp(e: React.PointerEvent) {
     e.stopPropagation()
     draggingRef.current = false
+    pointerStartX.current = null
   }
   function onKeyDown(e: React.KeyboardEvent) {
     if (e.key === 'ArrowLeft') setPct((p) => Math.max(0, p - 5))
