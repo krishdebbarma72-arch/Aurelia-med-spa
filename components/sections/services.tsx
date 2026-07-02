@@ -34,7 +34,7 @@ export function Services() {
           </RevealItem>
         </Reveal>
 
-        <Reveal stagger className="mt-6 -mx-2.5 flex flex-col gap-2.5 sm:mt-14 sm:mx-0 sm:gap-5">
+        <Reveal stagger className="mt-6 -mx-2.5 flex flex-col gap-4 sm:mt-14 sm:mx-0 sm:gap-8">
           {services.map((service) => {
             const open = expanded === service.id
             return (
