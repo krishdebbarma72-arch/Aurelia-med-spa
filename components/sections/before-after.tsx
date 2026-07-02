@@ -45,61 +45,53 @@ export function BeforeAfter() {
           </Reveal>
 
           <Reveal stagger>
-            {/* Case study card and highlights side by side on mobile, matched height */}
-            <div className="flex items-stretch gap-2.5 sm:flex-col sm:gap-4">
-              <RevealItem className="flex-1 rounded-2xl border border-border bg-background p-3 shadow-[0_0_1px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.06),0_2px_6px_rgba(0,0,0,0.04)] sm:flex-none sm:rounded-3xl sm:p-8">
-                <span className="text-[0.85rem] font-medium uppercase tracking-[0.1em] text-accent sm:text-xs sm:tracking-[0.18em]">
+            <div className="flex flex-col gap-3 sm:gap-4">
+              {/* Case study — full width on mobile, 2-col grid inside */}
+              <RevealItem className="rounded-2xl border border-border bg-background p-4 shadow-[0_0_1px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.06),0_2px_6px_rgba(0,0,0,0.04)] sm:rounded-3xl sm:p-8">
+                <span className="block text-center text-[0.85rem] font-medium uppercase tracking-[0.1em] text-accent sm:text-left sm:text-xs sm:tracking-[0.18em]">
                   Featured Case Study
                 </span>
-                <dl className="mt-2.5 grid grid-cols-1 gap-y-2 sm:mt-5 sm:grid-cols-2 sm:gap-y-5">
+                <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-3 sm:mt-5 sm:gap-y-5">
                   <div>
-                    <dt className="text-[0.85rem] text-muted-foreground sm:text-sm">
+                    <dt className="flex items-center gap-1.5 text-[0.85rem] font-medium text-foreground sm:text-sm">
+                      <span className="size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
                       Patient
                     </dt>
-                    <dd className="mt-0.5 text-[0.85rem] font-medium text-foreground sm:mt-1 sm:text-base">
-                      Female, Age 47
-                    </dd>
+                    <dd className="mt-0.5 text-[0.85rem] text-muted-foreground sm:mt-1 sm:text-base">Female, Age 47</dd>
                   </div>
                   <div>
-                    <dt className="text-[0.85rem] text-muted-foreground sm:text-sm">
+                    <dt className="flex items-center gap-1.5 text-[0.85rem] font-medium text-foreground sm:text-sm">
+                      <span className="size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
                       Treatment
                     </dt>
-                    <dd className="mt-0.5 text-[0.85rem] font-medium text-foreground sm:mt-1 sm:text-base">
-                      Combination Facial Rejuvenation
-                    </dd>
+                    <dd className="mt-0.5 text-[0.85rem] text-muted-foreground sm:mt-1 sm:text-base">Combination Facial Rejuvenation</dd>
                   </div>
                   <div>
-                    <dt className="text-[0.85rem] text-muted-foreground sm:text-sm">
+                    <dt className="flex items-center gap-1.5 text-[0.85rem] font-medium text-foreground sm:text-sm">
+                      <span className="size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
                       Timeframe
                     </dt>
-                    <dd className="mt-0.5 text-[0.85rem] font-medium text-foreground sm:mt-1 sm:text-base">
-                      12 Weeks
-                    </dd>
+                    <dd className="mt-0.5 text-[0.85rem] text-muted-foreground sm:mt-1 sm:text-base">12 Weeks</dd>
                   </div>
                   <div>
-                    <dt className="text-[0.85rem] text-muted-foreground sm:text-sm">
+                    <dt className="flex items-center gap-1.5 text-[0.85rem] font-medium text-foreground sm:text-sm">
+                      <span className="size-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
                       Goal
                     </dt>
-                    <dd className="mt-0.5 text-[0.85rem] font-medium text-foreground sm:mt-1 sm:text-base">
-                      Natural, refreshed look
-                    </dd>
+                    <dd className="mt-0.5 text-[0.85rem] text-muted-foreground sm:mt-1 sm:text-base">Natural, refreshed look</dd>
                   </div>
                 </dl>
               </RevealItem>
 
-              <RevealItem className="flex flex-1 flex-col gap-1.5 sm:flex-none sm:gap-3">
+              {/* Highlights — 3-col row on mobile, stacked on sm+ */}
+              <RevealItem className="grid grid-cols-3 gap-2 sm:flex sm:flex-col sm:gap-3">
                 {highlights.map((h) => (
                   <div
                     key={h}
-                    className="flex flex-1 items-center gap-1.5 rounded-xl border border-border bg-background px-2.5 py-2 shadow-[0_0_1px_rgba(0,0,0,0.03),0_1px_2px_rgba(0,0,0,0.04)] sm:flex-none sm:gap-3 sm:rounded-2xl sm:px-5 sm:py-4"
+                    className="flex flex-row items-center justify-start gap-1.5 rounded-xl border border-border bg-background px-2 py-3 shadow-[0_0_1px_rgba(0,0,0,0.03),0_1px_2px_rgba(0,0,0,0.04)] sm:rounded-2xl sm:px-5 sm:py-4"
                   >
-                    <span
-                      className="size-1.5 shrink-0 rounded-full bg-accent sm:size-2"
-                      aria-hidden="true"
-                    />
-                    <span className="text-[0.85rem] font-medium leading-snug text-foreground sm:text-base">
-                      {h}
-                    </span>
+                    <span className="size-1.5 shrink-0 rounded-full bg-accent sm:size-2" aria-hidden="true" />
+                    <span className="text-[0.75rem] font-medium leading-snug text-foreground sm:text-base">{h}</span>
                   </div>
                 ))}
               </RevealItem>
