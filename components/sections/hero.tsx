@@ -31,7 +31,7 @@ export function Hero() {
 
           <div className="mt-3 grid grid-cols-2 items-stretch gap-3 sm:mt-6 sm:gap-6">
             <Reveal className="flex items-center text-left">
-              <RevealItem className="text-base leading-loose text-muted-foreground sm:text-lg sm:leading-relaxed">
+              <RevealItem className="text-lg leading-relaxed text-muted-foreground sm:text-lg sm:leading-relaxed">
                 <p>
                   Personalized aesthetic treatments designed by board-certified
                   physician Dr. Sophia Laurent to help you achieve natural,
