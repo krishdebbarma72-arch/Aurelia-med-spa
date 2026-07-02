@@ -15,12 +15,9 @@ const hours = [
 ]
 
 const quickLinks = [
-  { label: 'About', href: '#about' },
   { label: 'Treatments', href: '#treatments' },
   { label: 'Results', href: '#results' },
-  { label: 'Assessment', href: '#assessment' },
-  { label: 'Contact', href: '#contact' },
-  { label: 'Book Consultation', href: '#contact' },
+  { label: 'FAQ', href: '#faq' },
 ]
 
 export function SiteFooter() {
