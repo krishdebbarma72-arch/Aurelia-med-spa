@@ -284,14 +284,14 @@ export function PersonalizedResults({
             Reserve My Consultation
             <ArrowRight className="size-4 shrink-0" />
           </a>
-          <button
-            type="button"
+          <a
+            href="#assessment"
             onClick={onRetake}
             className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl border border-primary-foreground/30 px-5 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10 sm:px-8 sm:py-4"
           >
             <RotateCcw className="size-4 shrink-0" />
             Retake Assessment
-          </button>
+          </a>
         </div>
       </motion.div>
     </motion.div>
