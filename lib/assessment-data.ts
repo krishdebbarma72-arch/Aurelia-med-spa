@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { Check } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   assessmentQuestions,
   getRecommendation,
@@ -55,26 +55,17 @@ export function Assessment() {
     }
   }, [stage])
 
-  const resetPending = useRef(false)
-
   const reset = () => {
-    resetPending.current = true
-    setAnswers({})
-    setStep(0)
-    setResult(null)
-    setStage('quiz')
+    // href="#assessment" on the button handles the scroll.
+    // Delay state reset so the section height doesn't shift
+    // mid-scroll and land in the wrong place.
+    setTimeout(() => {
+      setAnswers({})
+      setStep(0)
+      setResult(null)
+      setStage('quiz')
+    }, 400)
   }
-
-  // Scroll to assessment only after stage has actually flipped back to 'quiz'
-  // following a reset — avoids racing the animation with an arbitrary timeout.
-  useEffect(() => {
-    if (stage !== 'quiz' || !resetPending.current) return
-    resetPending.current = false
-    const timer = setTimeout(() => {
-      document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 800)
-    return () => clearTimeout(timer)
-  }, [stage])
 
   return (
     <section
