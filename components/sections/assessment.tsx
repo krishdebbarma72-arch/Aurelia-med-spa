@@ -63,9 +63,6 @@ export function Assessment() {
     setStep(0)
     setResult(null)
     setStage('quiz')
-    setTimeout(() => {
-      document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 50)
   }
 
   return (
