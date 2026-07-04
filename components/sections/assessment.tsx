@@ -26,7 +26,6 @@ export function Assessment() {
   const [loadingIndex, setLoadingIndex] = useState(0)
 
   const total = assessmentQuestions.length
-  // Clamp so rapid interactions can never index past the question array.
   const safeStep = Math.min(step, total - 1)
   const current = assessmentQuestions[safeStep]
 
@@ -36,7 +35,6 @@ export function Assessment() {
     setAnswers(updated)
 
     if (safeStep < total - 1) {
-      // Brief pause so the selection state is visible before advancing.
       setTimeout(() => setStep((s) => Math.min(s + 1, total - 1)), 380)
     } else {
       setResult(getRecommendation(updated))
@@ -44,7 +42,6 @@ export function Assessment() {
     }
   }
 
-  // Loading sequence -> results
   useEffect(() => {
     if (stage !== 'loading') return
     setLoadingIndex(0)
@@ -59,10 +56,15 @@ export function Assessment() {
   }, [stage])
 
   const reset = () => {
-    setAnswers({})
-    setStep(0)
-    setResult(null)
-    setStage('quiz')
+    // href="#assessment" on the button handles the scroll.
+    // Delay state reset so the section height doesn't shift
+    // mid-scroll and land in the wrong place.
+    setTimeout(() => {
+      setAnswers({})
+      setStep(0)
+      setResult(null)
+      setStage('quiz')
+    }, 400)
   }
 
   return (
