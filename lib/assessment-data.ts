@@ -92,12 +92,12 @@ const TREATMENTS: Record<string, string> = {
 }
 
 const PRICES: Record<string, string> = {
-  botox: 'Starting at $350 • 20 min',
-  fillers: 'Starting at $750 • 45 min',
-  laser: 'Starting at $500 • 60 min',
-  microneedling: 'Starting at $299 • 45 min',
-  ipl: 'Starting at $350 • 30 min',
-  hydrafacial: 'Starting at $199 • 45 min',
+  botox: 'Starting at $350',
+  fillers: 'Starting at $750',
+  laser: 'Starting at $500',
+  microneedling: 'Starting at $299',
+  ipl: 'Starting at $350',
+  hydrafacial: 'Starting at $199',
 }
 
 const PRIMARY_EXPLANATIONS: Record<string, string> = {
