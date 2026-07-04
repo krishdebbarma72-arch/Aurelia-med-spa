@@ -26,7 +26,6 @@ export function Assessment() {
   const [loadingIndex, setLoadingIndex] = useState(0)
 
   const total = assessmentQuestions.length
-  // Clamp so rapid interactions can never index past the question array.
   const safeStep = Math.min(step, total - 1)
   const current = assessmentQuestions[safeStep]
 
@@ -36,7 +35,6 @@ export function Assessment() {
     setAnswers(updated)
 
     if (safeStep < total - 1) {
-      // Brief pause so the selection state is visible before advancing.
       setTimeout(() => setStep((s) => Math.min(s + 1, total - 1)), 380)
     } else {
       setResult(getRecommendation(updated))
@@ -44,7 +42,6 @@ export function Assessment() {
     }
   }
 
-  // Loading sequence -> results
   useEffect(() => {
     if (stage !== 'loading') return
     setLoadingIndex(0)
@@ -63,9 +60,11 @@ export function Assessment() {
     setStep(0)
     setResult(null)
     setStage('quiz')
+    // 600ms lets the fade animation fully settle before scrolling,
+    // preventing the browser from landing on the FAQ section below.
     setTimeout(() => {
       document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 50)
+    }, 600)
   }
 
   return (
