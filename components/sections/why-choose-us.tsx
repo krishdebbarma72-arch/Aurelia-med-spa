@@ -43,7 +43,7 @@ const trustCards = [
 ]
 export function WhyChooseUs() {
   return (
-    <section className="bg-background px-5 py-14 sm:px-8 sm:py-20 lg:py-28">
+    <section className="bg-secondary px-5 py-14 sm:px-8 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-[1200px]">
         <Reveal stagger className="text-center">
           <RevealItem>
@@ -73,7 +73,7 @@ export function WhyChooseUs() {
               <RevealItem
                 key={card.title}
                 as="article"
-                className="flex items-center gap-3 rounded-2xl border border-border bg-secondary p-3 shadow-[0_0_1px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.06),0_2px_6px_rgba(0,0,0,0.04)] sm:gap-5 sm:rounded-3xl sm:p-6"
+                className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3 shadow-[0_0_1px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.06),0_2px_6px_rgba(0,0,0,0.04)] sm:gap-5 sm:rounded-3xl sm:p-6"
               >
                 <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent sm:size-14 sm:rounded-2xl">
                   <Icon className="size-4 sm:size-6" />
