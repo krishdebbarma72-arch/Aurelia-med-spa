@@ -13,7 +13,7 @@ export function Services() {
   const [expanded, setExpanded] = useState<string | null>(null)
 
   return (
-    <section id="treatments" className="bg-secondary px-5 py-14 sm:px-8 sm:py-20 lg:py-28">
+    <section id="treatments" className="bg-background px-5 py-14 sm:px-8 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-[1200px]">
         <Reveal stagger className="text-center">
           <RevealItem>
@@ -42,7 +42,7 @@ export function Services() {
                 key={service.id}
                 as="article"
                 className={cn(
-                  'group mx-auto flex w-full flex-col rounded-2xl border border-border bg-card p-3 shadow-[0_0_1px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.06),0_2px_6px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-accent/40 hover:shadow-[0_0_1px_rgba(0,0,0,0.05),0_2px_4px_rgba(0,0,0,0.08),0_6px_16px_rgba(0,0,0,0.08),0_12px_24px_rgba(0,0,0,0.06)] sm:max-w-[793px] sm:rounded-3xl sm:p-7',
+                  'group mx-auto flex w-full flex-col rounded-2xl border border-border bg-secondary p-3 shadow-[0_0_1px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.06),0_2px_6px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-accent/40 hover:shadow-[0_0_1px_rgba(0,0,0,0.05),0_2px_4px_rgba(0,0,0,0.08),0_6px_16px_rgba(0,0,0,0.08),0_12px_24px_rgba(0,0,0,0.06)] sm:max-w-[793px] sm:rounded-3xl sm:p-7',
                 )}
               >
                 {/* Row: text column + image column, 50/50, never wraps */}
@@ -79,7 +79,7 @@ export function Services() {
 
                   {/* Right: image column (50% width), photo capped smaller and centered within it */}
                   <div className="flex w-1/2 items-start justify-center">
-                    <div className="relative aspect-square w-[85%] max-w-[180px] shrink-0 overflow-hidden rounded-xl bg-secondary sm:max-w-[280px] sm:rounded-2xl">
+                    <div className="relative aspect-square w-[85%] max-w-[180px] shrink-0 overflow-hidden rounded-xl bg-background sm:max-w-[280px] sm:rounded-2xl">
                       <Image
                         src={service.image}
                         alt={service.name}
@@ -136,7 +136,7 @@ export function Services() {
           })}
         </Reveal>
 
-        <Reveal stagger className="mt-6 flex flex-col items-center gap-3 rounded-2xl bg-background p-4 text-center sm:mt-14 sm:gap-5 sm:rounded-3xl sm:p-10">
+        <Reveal stagger className="mt-6 flex flex-col items-center gap-3 rounded-2xl border border-border bg-secondary p-4 text-center shadow-[0_0_1px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.05),0_2px_5px_rgba(0,0,0,0.03)] sm:mt-14 sm:gap-5 sm:rounded-3xl sm:p-10">
           <RevealItem as="div">
             <h3 className="text-[0.85rem] font-medium text-foreground sm:font-serif sm:text-3xl">
               Not Sure Which Treatment Is Right For You?
